@@ -1,4 +1,5 @@
 import Banner from "@/components/Bannar/Bannar";
+import Categories from "@/components/Categories/Categories";
 import HealthConcern from "@/components/HealthConcern/HealthConcern";
 import Prescription from "@/components/Prescription/Prescription";
 import Footer from "@/components/Shared/Footer/Footer";
@@ -12,6 +13,7 @@ export default function Home() {
       <Banner />
       <HealthConcern />
       <Prescription />
+      <Categories />
       <Footer />
     </div>
   );

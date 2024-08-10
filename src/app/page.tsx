@@ -1,5 +1,6 @@
 import Banner from "@/components/Bannar/Bannar";
 import HealthConcern from "@/components/HealthConcern/HealthConcern";
+import Footer from "@/components/Shared/Footer/Footer";
 import Navbar from "@/components/Shared/Nav/Navbar";
 import Image from "next/image";
 
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Banner />
       <HealthConcern />
+      <Footer />
     </div>
   );
 }

@@ -35,7 +35,9 @@ const HealthConcern = () => {
   ];
   return (
     <div className="my-16">
-      <h1 className="text-2xl font-semibold ">Lab Tests by Health Concern</h1>
+      <h1 className="text-[26px] font-semibold ">
+        Lab Tests by Health Concern
+      </h1>
       <p className="flex items-center font-normal text-base mb-5">
         Powered by{" "}
         <span className="my-2 w-20 ">
@@ -55,8 +57,7 @@ const HealthConcern = () => {
             <div>
               <Image
                 src={health?.image}
-                //  alt={health?.title}
-                alt="ok"
+                alt={health?.title}
                 layout="responsive"
                 width={200}
                 height={200}

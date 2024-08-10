@@ -73,8 +73,8 @@ const Banner: React.FC = () => {
               <Image
                 src={item?.backgroundImage}
                 alt="ok"
-                height={150}
-                width={150}
+                height={130}
+                width={130}
                 priority
                 className="py-2 "
               />

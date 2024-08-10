@@ -23,19 +23,31 @@ const Navbar = () => {
           />
         </div>
         <div className="hidden md:flex space-x-6 justify-center items-center">
-          <a href="#" className="text-black hover:text-gray-600 text-xl">
+          <a
+            href="#"
+            className="text-black hover:text-gray-600 text-base font-medium"
+          >
             Home
           </a>
-          <a href="#" className="text-black hover:text-gray-600 text-xl">
+          <a
+            href="#"
+            className="text-black hover:text-gray-600 text-base font-medium"
+          >
             About
           </a>
-          <a href="#" className="text-black hover:text-gray-600 text-xl">
+          <a
+            href="#"
+            className="text-black hover:text-gray-600 text-base font-medium"
+          >
             Services
           </a>
-          <a href="#" className="text-black hover:text-gray-600 text-xl">
+          <a
+            href="#"
+            className="text-black hover:text-gray-600 text-base font-medium"
+          >
             Contact
           </a>
-          <Button className="md:col-span-6 text-white p-2 text-xl font-bold">
+          <Button className="md:col-span-6 text-white p-2 text-base  font-bold">
             Login
           </Button>
         </div>

@@ -1,6 +1,7 @@
 import Banner from "@/components/Bannar/Bannar";
 import Categories from "@/components/Categories/Categories";
 import HealthConcern from "@/components/HealthConcern/HealthConcern";
+import OfferCategories from "@/components/OfferCategories/OfferCategories";
 import Prescription from "@/components/Prescription/Prescription";
 import Footer from "@/components/Shared/Footer/Footer";
 import Navbar from "@/components/Shared/Nav/Navbar";
@@ -11,6 +12,7 @@ export default function Home() {
     <div className="text-4xl">
       <Navbar />
       <Banner />
+      <OfferCategories />
       <HealthConcern />
       <Prescription />
       <Categories />

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HealthConcern = () => {
   return (
-    <div className="my-16">
+    <div className="my-4">
       <h1 className="text-[26px] font-semibold ">
         Lab Tests by Health Concern
       </h1>
@@ -20,16 +20,16 @@ const HealthConcern = () => {
           />
         </span>
       </p>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex justify-center items-center gap-4 overflow-x-auto scrollbar-hide whitespace-nowrap">
         {HealthData.map((health, index) => (
           <div key={index}>
-            <div>
+            <div className="w-full h-full">
               <Image
                 src={health?.image}
                 alt={health?.title}
                 layout="responsive"
-                width={200}
-                height={200}
+                width={300}
+                height={300}
               />
             </div>
           </div>

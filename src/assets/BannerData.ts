@@ -11,7 +11,7 @@ export const items: TBanner[] = [
     title: "Medicine",
     subtitle: "FLAT 24% OFF",
     backgroundImage: "https://i.ibb.co/pxpF8kb/medicine-ff2.webp",
-    //     backgroundColor: "",
+    // backgroundColor: "",
     buttonLink: "",
   },
   {

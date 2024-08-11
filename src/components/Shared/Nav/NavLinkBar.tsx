@@ -1,54 +1,39 @@
 "use client";
 import Link from "next/link";
-// import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
+import { useRef } from "react";
 
 const NavLinkBar = () => {
   const pathname = usePathname();
+  const navRef = useRef<HTMLDivElement>(null);
 
   const pages = [
-    {
-      nav: "Home",
-      route: "/",
-    },
-    {
-      nav: "Challenges",
-      route: "/challenges",
-    },
-    {
-      nav: "Pricing",
-      route: "/pricing",
-    },
-    {
-      nav: "Blog",
-      route: "/blog",
-    },
-    {
-      nav: "Trainers",
-      route: "/trainers",
-    },
-    {
-      nav: "Dashboard",
-      route: "/dashboard",
-    },
+    { nav: "Home", route: "/" },
+    { nav: "Medicine", route: "/medicine" },
+    { nav: "Tab Tests", route: "/taptests" },
+    { nav: "Healthcare", route: "/healthcare" },
+    { nav: "Health Blogs", route: "/healthblogs" },
+    { nav: "Offer", route: "/offer" },
   ];
 
-  const handleCloseNavMenu = () => {};
-
   return (
-    <div className="flex justify-center items-center gap-4 border-t-2 font-medium text-base py-3">
-      {pages.map((page) => (
-        <Link href={page.route} key={page.route}>
-          <div
-            className={`text-center ${
-              pathname === page.route ? "text-blue-500" : "text-black"
-            }`}
-            onClick={handleCloseNavMenu}
-          >
-            {page.nav}
-          </div>
-        </Link>
-      ))}
+    <div className="relative w-full">
+      <div
+        ref={navRef}
+        className="flex md:justify-center items-center gap-4 border-t-2 font-medium text-base py-3 overflow-x-auto scrollbar-hide whitespace-nowrap"
+      >
+        {pages.map((page) => (
+          <Link href={page.route} key={page.route}>
+            <div
+              className={`text-center px-4 ${
+                pathname === page.route ? "text-blue-500" : "text-black"
+              }`}
+            >
+              {page.nav}
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

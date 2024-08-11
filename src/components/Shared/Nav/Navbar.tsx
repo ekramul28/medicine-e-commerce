@@ -81,7 +81,7 @@ const Navbar = () => {
                     <Input
                       type="email"
                       id="UserEmail"
-                      placeholder="Search for"
+                      // placeholder="Search for"
                       className="w-full  bg-white p-2 pl-10 border-none focus:border-transparent focus:ring-transparent sm:text-sm"
                     />
                   </div>

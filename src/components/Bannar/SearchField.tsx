@@ -8,7 +8,7 @@ const SearchField = () => {
         <p className="font-semibold text-[18px] md:text-[20px] lg:text-[24px] text-center lg:text-left">
           What are you looking for?
         </p>
-        <p className="flex justify-end items-center font-medium text-xs md:text-sm lg:text-base gap-2 md:gap-3">
+        <p className="flex md:justify-end justify-center py-3 md:py-0 items-center font-medium text-xs md:text-sm lg:text-base gap-2 md:gap-3">
           <svg
             width={20}
             height={20}

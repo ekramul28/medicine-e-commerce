@@ -29,7 +29,7 @@ const OfferCategories = () => {
   };
 
   return (
-    <div className="relative w-full  mx-auto overflow-hidden">
+    <div className="relative w-full  mx-auto overflow-hidden my-8">
       <div className="overflow-hidden">
         <div
           className="flex gap-3  transition-transform duration-500 ease-out"
@@ -38,7 +38,10 @@ const OfferCategories = () => {
           }}
         >
           {offer.map((data, index) => (
-            <div key={index} className="w-[700px] h-full flex-shrink-0">
+            <div
+              key={index}
+              className="md:w-[700px] w-full h-full flex-shrink-0"
+            >
               <Image
                 src={data.image}
                 alt="healthtitle"

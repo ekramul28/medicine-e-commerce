@@ -10,17 +10,17 @@ const Banner: React.FC = () => {
         {" "}
         <SearchField />
       </div>
-      <div className="flex justify-between  ">
+      <div className="flex justify-between  overflow-x-auto scrollbar-hide whitespace-nowrap mb-2 ">
         {items.map((item, index) => (
           <div
             key={index}
-            className="max-w-sm rounded overflow-hidden hover:shadow-lg px-2 transition-transform transform hover:scale-105 "
+            className="max-w-sm rounded  hover:shadow-lg px-2 transition-transform transform hover:scale-105 "
           >
-            <div className=" rounded-xl ">
+            <div className=" h-28 w-32 rounded-xl ">
               <Image
                 src={item?.backgroundImage}
                 alt="ok"
-                height={130}
+                height={100}
                 width={130}
                 priority
                 className="py-2 "
@@ -28,7 +28,7 @@ const Banner: React.FC = () => {
             </div>
             <div className="text-center  ">
               <p className=" text-base font-medium py-2">{item?.title}</p>
-              <p className="text-base font-medium text-[#F47779]">
+              <p className="lg:text-sm text-xs font-semibold text-[#F47779]">
                 {item?.subtitle}
               </p>
             </div>

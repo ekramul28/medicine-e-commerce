@@ -3,7 +3,7 @@ import React from "react";
 
 const Prescription = () => {
   return (
-    <div className="grid grid-cols-2 gap-4 my-3 h-60 w-full">
+    <div className="grid md:grid-cols-2 gap-4 my-3 h-60 w-full">
       <div className="flex items-center bg-[#EEF4FF] ">
         <div className="flex gap-4 items-center">
           <div>
@@ -20,7 +20,7 @@ const Prescription = () => {
             <p className="font-normal text-sm py-4">
               Upload prescription and we will deliver your medicines
             </p>
-            <button className="flex items-center gap-2 mt-1 w-full bg-teal-500 rounded px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+            <button className="flex items-center gap-2 my-2  bg-teal-500 rounded px-6 py-2 text-sm font-bold uppercase  text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
               <svg
                 width={24}
                 height={24}
@@ -43,7 +43,7 @@ const Prescription = () => {
           </div>
         </div>
       </div>
-      <div className="  pt-14   ">
+      <div className="  md:pt-14   ">
         <h1 className="font-semibold text-sm pb-2">How to Work?</h1>
         <div className="flex gap-3  ">
           <div className="">

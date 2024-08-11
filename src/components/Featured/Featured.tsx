@@ -46,10 +46,12 @@ const Featured = () => {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden my-8 ">
       <div>
         <h1 className="font-semibold text-[26px]">Featured Brands</h1>
-        <p className="font-normal text-base">Pick from our favourite brands</p>
+        <p className="font-normal text-base py-2">
+          Pick from our favourite brands
+        </p>
       </div>
 
       <div className="relative">
@@ -81,7 +83,7 @@ const Featured = () => {
                 </div>
               </div>
               <div>
-                <p className="text-base font-medium text-center">
+                <p className="text-base font-normal text-center mt-2">
                   {categorie.title}
                 </p>
               </div>

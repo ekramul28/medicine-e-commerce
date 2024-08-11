@@ -16,9 +16,9 @@ const HomeCom = () => {
       <HealthConcern />
       <Prescription />
       <Categories />
-      {/* <Featured />
+      <Featured />
       <WhyChoose />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

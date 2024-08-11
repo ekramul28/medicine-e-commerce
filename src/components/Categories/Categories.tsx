@@ -37,13 +37,13 @@ const Categories = () => {
           {categories.map((categorie, index) => (
             <div key={index} style={{ minWidth: `${cardWidth}px` }}>
               <div className="rounded-xl border overflow-hidden shadow-lg hover:shadow-2xl px-2 transition-transform transform hover:scale-105 mt-2 md:mt-0">
-                <div className="rounded-xl h-60 md:h-80 w-[220px] flex justify-center items-center">
+                <div className="rounded-xl h-60  w-[220px] flex justify-center items-center">
                   <Image
                     src={categorie?.image}
                     alt={categorie?.title}
                     layout="responsive"
                     width={50}
-                    height={1000}
+                    height={100}
                   />
                 </div>
               </div>

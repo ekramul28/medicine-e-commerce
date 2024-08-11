@@ -4,17 +4,17 @@ import Input from "../input/input";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="mt-8">
       <footer className="bg-[#EEF4FF]">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="lg:flex lg:items-start lg:gap-8">
-            <div className="text-teal-600">
+            <div className="text-teal-600 ">
               <Image
                 src="https://i.ibb.co/xzg7M5N/Thyrocare.webp"
                 alt="Thyrocare Image"
                 layout="responsive"
-                width={500}
-                height={300}
+                width={400}
+                height={200}
               />
             </div>
 
@@ -27,23 +27,39 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="col-span-2 lg:col-span-3 lg:flex lg:items-end">
+              <div className="col-span-2 lg:col-span-3 lg:flex lg:items-end mt-5">
                 <form className="w-full">
                   <label htmlFor="UserEmail" className="sr-only">
-                    {" "}
-                    Email{" "}
+                    Email
                   </label>
-
-                  <div className="border bg-white rounded-full p-2  sm:flex sm:items-center sm:gap-4">
-                    <Input
-                      type="email"
-                      id="UserEmail"
-                      placeholder="🔍Inter your Email"
-                      className="w-full bg-white p-2 border-none focus:border-transparent focus:ring-transparent sm:text-sm"
-                    />
-
-                    <button className="mt-1 w-full bg-teal-500 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
-                      Sign Up
+                  <div className="border bg-white h-12 md:h-14 rounded-full p-2 flex items-center gap-2 sm:gap-4">
+                    <div className="relative w-full">
+                      <svg
+                        className="absolute left-3 top-1/2 transform -translate-y-1/2 z-50 text-gray-500"
+                        fill="none"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        width="20"
+                        height="20"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                        ></path>
+                      </svg>
+                      <Input
+                        type="email"
+                        id="UserEmail"
+                        // placeholder="Search for"
+                        className="w-full h-10 rounded-full bg-white md:p-2 md:pl-10 border-none focus:border-transparent focus:ring-transparent sm:text-sm"
+                      />
+                    </div>
+                    <button className=" w-full bg-teal-500 rounded-full  md:px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+                      Search
                     </button>
                   </div>
                 </form>

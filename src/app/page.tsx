@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <div className="text-4xl">
       <Navbar />
-      {/* <Banner />
-      <OfferCategories />
+      <Banner />
+      {/* <OfferCategories />
       <HealthConcern />
       <Prescription />
       <Categories />

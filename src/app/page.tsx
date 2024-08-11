@@ -6,6 +6,7 @@ import OfferCategories from "@/components/OfferCategories/OfferCategories";
 import Prescription from "@/components/Prescription/Prescription";
 import Footer from "@/components/Shared/Footer/Footer";
 import Navbar from "@/components/Shared/Nav/Navbar";
+import WhyChoose from "@/components/WhyChoose/WhyChoose";
 import Image from "next/image";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Prescription />
       <Categories />
       <Featured />
+      <WhyChoose />
       <Footer />
     </div>
   );

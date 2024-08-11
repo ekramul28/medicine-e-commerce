@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
         {" "}
         <SearchField />
       </div>
-      <div className="flex justify-between  mt-7">
+      <div className="flex justify-between  ">
         {items.map((item, index) => (
           <div
             key={index}

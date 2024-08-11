@@ -13,14 +13,14 @@ export default function Home() {
   return (
     <div className="text-4xl">
       <Navbar />
-      <Banner />
+      {/* <Banner />
       <OfferCategories />
       <HealthConcern />
       <Prescription />
       <Categories />
       <Featured />
       <WhyChoose />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

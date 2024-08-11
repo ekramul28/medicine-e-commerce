@@ -3,10 +3,10 @@ import Input from "../Shared/input/input";
 
 const SearchField = () => {
   return (
-    <div className="grid items-center  ">
+    <div className="grid items-center mt-20 ">
       <div className="  h-60 w-[80%] mx-auto">
-        <p className="font-semibold text-[22px]">What are you looking for?</p>
-        <p className=" flex justify-end items-center  font-medium text-sm">
+        <p className="font-semibold text-[24px]">What are you looking for?</p>
+        <p className=" flex justify-end items-center  font-medium text-sm gap-3">
           <svg
             width={24}
             height={24}
@@ -27,8 +27,26 @@ const SearchField = () => {
           order with prescription.{" "}
           <span className="font-semibold text-[#0A534F]"> UPLOAD NOW </span>
         </p>
-        <div className="w-full mx-auto ">
-          <Input className="rounded-full w-[80%] " placeholder="Search hear" />
+        <div className="col-span-2 lg:col-span-3 lg:flex lg:items-end">
+          <form className="w-full">
+            <label htmlFor="UserEmail" className="sr-only">
+              {" "}
+              Email{" "}
+            </label>
+
+            <div className="border bg-white rounded-full p-2  sm:flex sm:items-center sm:gap-4">
+              <Input
+                type="email"
+                id="UserEmail"
+                placeholder="🔍Inter your Email"
+                className="w-full bg-white p-2 border-none focus:border-transparent focus:ring-transparent sm:text-sm"
+              />
+
+              <button className="mt-1 w-full bg-teal-500 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+                Sign Up
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

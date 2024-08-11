@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const LoginPage = () => {
@@ -100,9 +101,9 @@ const LoginPage = () => {
 
             <p className="text-center text-sm text-gray-500">
               No account?
-              <a className="underline" href="#">
+              <Link className="underline" href="/register">
                 Sign up
-              </a>
+              </Link>
             </p>
           </form>
         </div>

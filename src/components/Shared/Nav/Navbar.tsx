@@ -1,16 +1,15 @@
-"use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import Button from "../Button";
 import Input from "../input/input";
 import NavLinkBar from "./NavLinkBar";
+import Link from "next/link";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // };
 
   return (
     <div className="fixed top-0 left-0 w-full z-50  bg-white shadow-lg ">
@@ -86,7 +85,7 @@ const Navbar = () => {
                     />
                   </div>
 
-                  <button className="mt-1 w-full bg-teal-500 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+                  <button className="mt-1 w-full bg-[#4F46E5] rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
                     Search
                   </button>
                 </div>
@@ -95,25 +94,27 @@ const Navbar = () => {
           </div>
           <div className=" flex gap-3 justify-end items-center ">
             <div>
-              <p className="md:font-medium md:text-sm font-normal text-xs flex items-center md:gap-2">
-                <svg
-                  className="md:h-6 md:w-6 h-4 w-4"
-                  data-slot="icon"
-                  fill="none"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                  ></path>
-                </svg>
-                Hello,Log in
-              </p>
+              <Link href={"/login"}>
+                <p className="md:font-medium md:text-sm font-normal text-xs flex items-center md:gap-2">
+                  <svg
+                    className="md:h-6 md:w-6 h-4 w-4"
+                    data-slot="icon"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    ></path>
+                  </svg>
+                  Hello,Log in
+                </p>
+              </Link>
             </div>
             <div>
               <p className="md:font-medium md:text-sm font-normal text-xs flex items-center md:gap-2">

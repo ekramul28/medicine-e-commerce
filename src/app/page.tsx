@@ -1,5 +1,6 @@
 import Banner from "@/components/Bannar/Bannar";
 import Categories from "@/components/Categories/Categories";
+import Featured from "@/components/Featured/Featured";
 import HealthConcern from "@/components/HealthConcern/HealthConcern";
 import OfferCategories from "@/components/OfferCategories/OfferCategories";
 import Prescription from "@/components/Prescription/Prescription";
@@ -16,6 +17,7 @@ export default function Home() {
       <HealthConcern />
       <Prescription />
       <Categories />
+      <Featured />
       <Footer />
     </div>
   );

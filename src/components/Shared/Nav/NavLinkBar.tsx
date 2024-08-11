@@ -13,7 +13,7 @@ const NavLinkBar = () => {
     { nav: "Tab Tests", route: "/taptests" },
     { nav: "Healthcare", route: "/healthcare" },
     { nav: "Health Blogs", route: "/healthblogs" },
-    { nav: "Offer", route: "/offer" },
+    { nav: "Offers", route: "/offers" },
   ];
 
   return (

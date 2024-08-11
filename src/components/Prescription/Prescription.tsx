@@ -3,7 +3,7 @@ import React from "react";
 
 const Prescription = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-4 my-3 h-60 w-full">
+    <div className="grid md:grid-cols-2 gap-4 my-8 h-60 w-full">
       <div className="flex items-center bg-[#EEF4FF] ">
         <div className="flex gap-4 items-center">
           <div>

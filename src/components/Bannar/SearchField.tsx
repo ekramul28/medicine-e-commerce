@@ -37,7 +37,7 @@ const SearchField = () => {
             <div className="border bg-white h-12 md:h-14 rounded-full p-2 flex items-center gap-2 sm:gap-4">
               <div className="relative w-full">
                 <svg
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 z-50 text-gray-500"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 z-40 text-gray-500"
                   fill="none"
                   strokeWidth="1.5"
                   stroke="currentColor"

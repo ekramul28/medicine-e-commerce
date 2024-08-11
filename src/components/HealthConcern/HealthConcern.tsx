@@ -7,7 +7,7 @@ const HealthConcern = () => {
       <h1 className="text-[26px] font-semibold ">
         Lab Tests by Health Concern
       </h1>
-      <p className="flex items-center font-normal text-base mb-5">
+      <p className="flex items-center font-normal text-base mb-2">
         Powered by{" "}
         <span className="my-2 w-20 ">
           {" "}

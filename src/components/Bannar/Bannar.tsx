@@ -5,7 +5,7 @@ import { items } from "@/assets/BannerData";
 
 const Banner: React.FC = () => {
   return (
-    <div>
+    <div className="mt-48">
       <div className="mx-auto">
         {" "}
         <SearchField />

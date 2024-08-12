@@ -32,7 +32,7 @@ const ProductApi = baseApi.injectEndpoints({
         }
 
         return {
-          url: `/products`,
+          url: `/medicine`,
           method: "GET",
           params: params,
         };
@@ -40,7 +40,7 @@ const ProductApi = baseApi.injectEndpoints({
     }),
     singleProduct: builder.query({
       query: (id) => ({
-        url: `/products/${id}`,
+        url: `/medicine/${id}`,
         method: "GET",
       }),
     }),

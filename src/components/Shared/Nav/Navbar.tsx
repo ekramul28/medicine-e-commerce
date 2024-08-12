@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
 import Input from "../input/input";
 import NavLinkBar from "./NavLinkBar";
 import Link from "next/link";

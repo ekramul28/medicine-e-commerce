@@ -18,7 +18,6 @@ const HomeCom = () => {
       <Categories />
       <Featured />
       <WhyChoose />
-      <Footer />
     </div>
   );
 };

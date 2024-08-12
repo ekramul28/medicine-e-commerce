@@ -1,10 +1,18 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Input from "../input/input";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+
   return (
-    <div className="mt-8">
+    <div
+      className={`mt-8 ${
+        pathname === "/login" || pathname === "/register" ? "hidden" : ""
+      }`}
+    >
       <footer className="bg-[#EEF4FF]">
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="lg:flex lg:items-start lg:gap-8">

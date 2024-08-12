@@ -12,3 +12,10 @@ export type TProduct = {
   offerDiscount?: number;
   isDeleted?: boolean;
 };
+
+export type TMeta = {
+  totalPage: number;
+  page: number;
+  limit: number;
+  total: number;
+};

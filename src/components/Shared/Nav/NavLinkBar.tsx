@@ -10,7 +10,7 @@ const NavLinkBar = () => {
   const pages = [
     { nav: "Home", route: "/" },
     { nav: "Medicine", route: "/medicine" },
-    { nav: "Tab Tests", route: "/taptests" },
+    { nav: "Lab Tests", route: "/labtests" },
     { nav: "Healthcare", route: "/healthcare" },
     { nav: "Health Blogs", route: "/healthblogs" },
     { nav: "Offers", route: "/offers" },

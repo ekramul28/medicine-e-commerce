@@ -1,9 +1,9 @@
+"use client";
 import Link from "next/link";
-import React from "react";
 
 const LoginPage = () => {
   return (
-    <div className="mt-24">
+    <div className="mt-10 min-h-screen">
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
         <div className="mx-auto max-w-lg">
           <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">

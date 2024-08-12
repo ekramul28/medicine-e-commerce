@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const RegisterPage = () => {
   return (
-    <div className="mt-24">
+    <div className="min-h-screen">
       <section className="bg-white">
         <div className="lg:grid lg:min-h-screen ">
           <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
@@ -160,9 +161,9 @@ const RegisterPage = () => {
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                     Already have an account?
-                    <a href="#" className="text-gray-700 underline">
+                    <Link href="/login" className="text-gray-700 underline">
                       Log in
-                    </a>
+                    </Link>
                     .
                   </p>
                 </div>

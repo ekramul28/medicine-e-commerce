@@ -1,18 +1,19 @@
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import Input from "../input/input";
 import NavLinkBar from "./NavLinkBar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
-
+  const pathname = usePathname();
   return (
-    <div className="fixed top-0 left-0 w-full z-50  bg-white shadow-lg ">
+    <div
+      className={`fixed top-0 left-0 w-full z-50  bg-white shadow-lg ${
+        pathname === "/login" || pathname === "/register" ? "hidden" : ""
+      }`}
+    >
       <div className=" h-12 md:h-20 flex justify-center items-center ">
         <div className="container mx-auto  py-2 flex justify-between items-center">
           <div className="text-2xl font-bold text-black flex items-center">

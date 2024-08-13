@@ -10,6 +10,7 @@ import {
   useLoginUserMutation,
 } from "../redux/features/Auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
+import { setUser, TUser } from "../redux/features/Auth/authSlice";
 
 const RegisterPage = () => {
   const [registerError, setRegisterError] = useState("");

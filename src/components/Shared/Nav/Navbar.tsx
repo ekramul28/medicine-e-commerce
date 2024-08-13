@@ -7,11 +7,12 @@ import { usePathname } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { RootState } from "@/app/redux/store";
 import { logout } from "@/app/redux/features/Auth/authSlice";
+import ProfileDropdown from "@/components/ProfileDropdown/ProfileDrop";
 
 const Navbar = () => {
   const pathname = usePathname();
   const user = useAppSelector((state: RootState) => state.auth.user);
-
+  console.log(user);
   const dispatch = useAppDispatch();
   const handelLogout = () => {
     dispatch(logout());
@@ -104,7 +105,12 @@ const Navbar = () => {
           <div className=" flex gap-3 justify-end items-center ">
             <div>
               {user ? (
-                <div onClick={handelLogout}>OK</div>
+                <div className="flex justify-center items-center">
+                  <ProfileDropdown
+                    image={user?.imageUrl}
+                    handelLogout={handelLogout}
+                  />
+                </div>
               ) : (
                 <Link href={"/login"}>
                   <p className="md:font-medium md:text-sm font-normal text-xs flex items-center md:gap-2">

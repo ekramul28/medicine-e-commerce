@@ -35,7 +35,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ product }) => {
           </p>
 
           <Link
-            href="#"
+            href={`medicine/${product._id}`}
             className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
           >
             See Details

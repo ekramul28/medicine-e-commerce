@@ -49,7 +49,6 @@ const RegisterPage = () => {
         const result = await loginUser({ email, password }).unwrap();
         if (result?.success) {
           const user = verifyToken(result.data.accessToken) as TUser;
-          console.log({ user });
           dispatch(setUser({ user: user, token: result.data.accessToken }));
         }
         form.reset();
@@ -116,7 +115,7 @@ const RegisterPage = () => {
 
                   <div className="relative  border rounded">
                     <input
-                      type="text"
+                      type="number"
                       name="number"
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Enter Last Number"

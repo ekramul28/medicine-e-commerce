@@ -6,7 +6,6 @@ import Prescription from "../Prescription/Prescription";
 import Categories from "../Categories/Categories";
 import Featured from "../Featured/Featured";
 import WhyChoose from "../WhyChoose/WhyChoose";
-import Footer from "../Shared/Footer/Footer";
 
 const HomeCom = () => {
   return (

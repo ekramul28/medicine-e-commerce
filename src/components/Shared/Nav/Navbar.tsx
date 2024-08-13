@@ -4,9 +4,18 @@ import Input from "../input/input";
 import NavLinkBar from "./NavLinkBar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { RootState } from "@/app/redux/store";
+import { logout } from "@/app/redux/features/Auth/authSlice";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const user = useAppSelector((state: RootState) => state.auth.user);
+
+  const dispatch = useAppDispatch();
+  const handelLogout = () => {
+    dispatch(logout());
+  };
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50  bg-white shadow-lg ${
@@ -94,27 +103,31 @@ const Navbar = () => {
           </div>
           <div className=" flex gap-3 justify-end items-center ">
             <div>
-              <Link href={"/login"}>
-                <p className="md:font-medium md:text-sm font-normal text-xs flex items-center md:gap-2">
-                  <svg
-                    className="md:h-6 md:w-6 h-4 w-4"
-                    data-slot="icon"
-                    fill="none"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                    ></path>
-                  </svg>
-                  Hello,Log in
-                </p>
-              </Link>
+              {user ? (
+                <div onClick={handelLogout}>OK</div>
+              ) : (
+                <Link href={"/login"}>
+                  <p className="md:font-medium md:text-sm font-normal text-xs flex items-center md:gap-2">
+                    <svg
+                      className="md:h-6 md:w-6 h-4 w-4"
+                      data-slot="icon"
+                      fill="none"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                      ></path>
+                    </svg>
+                    Hello,Log in
+                  </p>
+                </Link>
+              )}
             </div>
             <div>
               <Link href={"/offers"}>

@@ -1,3 +1,4 @@
+"use client";
 import { baseApi } from "../../api/baseApi";
 
 const CartApi = baseApi.injectEndpoints({
@@ -32,7 +33,7 @@ const CartApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["cart", "cart2"],
     }),
-    
+
     updateProductCart: builder.mutation({
       query: (updateData) => ({
         url: `/cart/${updateData.id}`,

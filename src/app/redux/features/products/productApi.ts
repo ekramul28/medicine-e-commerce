@@ -1,3 +1,4 @@
+"use client";
 import { baseApi } from "../../api/baseApi";
 export type TProduct = {
   _id: string;
@@ -9,6 +10,7 @@ export type TProduct = {
   price: number;
   rating: number;
   description: string;
+  keyboardType: string;
   offerPrice?: number;
   offer?: boolean;
   isDeleted?: boolean;
@@ -24,7 +26,6 @@ const ProductApi = baseApi.injectEndpoints({
     product: builder.query({
       query: (args) => {
         const params = new URLSearchParams();
-        console.log({ args });
         if (args) {
           args.forEach((item: TQueryParam) => {
             params.append(item.name, item.value as string);
@@ -40,7 +41,7 @@ const ProductApi = baseApi.injectEndpoints({
     }),
     singleProduct: builder.query({
       query: (id) => ({
-        url: `/medicine/${id}`,
+        url: `/products/${id}`,
         method: "GET",
       }),
     }),

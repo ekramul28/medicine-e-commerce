@@ -1,11 +1,11 @@
 "use client";
-import { useProductQuery } from "@/Redux/features/products/productApi";
 
 import React, { useState } from "react";
 import { TMeta, TProduct } from "@/assets/AllType";
 import MedicineCard from "./MedicineCard";
 import LoadingSpinner from "@/components/Loding/Loding";
 import CustomPagination from "@/components/Pagination/Pagination";
+import { useProductQuery } from "../redux/features/products/productApi";
 
 const Medicine = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +24,7 @@ const Medicine = () => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-  const totalPages = meta.totalPage;
+  const totalPages = meta?.totalPage;
   return (
     <div className="mt-36 ">
       <div className=" grid lg:grid-cols-4 md:grid-cols-3 gap-2 items-center mx-2 min-h-screen ">

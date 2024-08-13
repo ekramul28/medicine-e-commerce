@@ -1,12 +1,12 @@
 "use client";
-import { useLoginUserMutation } from "@/Redux/features/Auth/authApi";
-import { useAppDispatch } from "@/Redux/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { verifyToken } from "../cards/verifyToken";
-import { setUser, TUser } from "@/Redux/features/Auth/authSlice";
+import { useAppDispatch } from "../redux/hooks";
+import { useLoginUserMutation } from "../redux/features/Auth/authApi";
+import { setUser, TUser } from "../redux/features/Auth/authSlice";
 
 const LoginPage = () => {
   const [loginUser] = useLoginUserMutation();

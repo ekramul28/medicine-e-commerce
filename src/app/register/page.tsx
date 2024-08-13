@@ -1,18 +1,15 @@
 "use client";
 import imageUpload from "@/api/imageUp/ImageUp";
-import {
-  useCreateUserMutation,
-  useLoginUserMutation,
-} from "@/Redux/features/Auth/authApi";
-import { setUser, TUser } from "@/Redux/features/Auth/authSlice";
-import { useAppDispatch } from "@/Redux/hooks";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { verifyToken } from "../cards/verifyToken";
+import {
+  useCreateUserMutation,
+  useLoginUserMutation,
+} from "../redux/features/Auth/authApi";
+import { useAppDispatch } from "../redux/hooks";
 
 const RegisterPage = () => {
   const [registerError, setRegisterError] = useState("");

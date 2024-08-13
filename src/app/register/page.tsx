@@ -1,8 +1,51 @@
+"use client";
+import imageUpload from "@/api/imageUp/ImageUp";
+import { useCreateUserMutation } from "@/Redux/features/Auth/authApi";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
+  const [registerError, setRegisterError] = useState("");
+  const [createUser] = useCreateUserMutation();
+
+  const handelForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const fastName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.password_confirmation.value;
+    const photoFile = form.imgUrl.files[0];
+
+    setRegisterError("");
+    if (password.length < 6) {
+      return toast("Password must be at least 6 characters");
+    }
+    if (!/[A-Z]/.test(password)) {
+      return toast("Password must be a Uppercase letter");
+    }
+    if (!/[a-z]/.test(password)) {
+      return toast("Password must be a Lowercase letter");
+    }
+    if (!/[0-9]/.test(password)) {
+      return toast("Password must be a number ");
+    }
+    if (!(password == confirmPassword)) {
+      return toast("password or confirmPassword not equal ");
+    }
+    try {
+      const image = await imageUpload(photoFile);
+      console.log(image);
+      const userCreate = await createUser(ok);
+      //  const imageUrl=image.
+      // const result = await register(email, password);
+    } catch (error) {
+      setRegisterError((error as any).message);
+    }
+  };
   return (
     <div className=" mt-4 min-h-screen">
       <div className="w-60 h-full">
@@ -26,7 +69,10 @@ const RegisterPage = () => {
                 </h1>
               </div>
 
-              <form action="#" className="mt-8 grid grid-cols-6 gap-6 ">
+              <form
+                onSubmit={handelForm}
+                className="mt-8 grid grid-cols-6 gap-6 "
+              >
                 <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="FirstName"
@@ -38,8 +84,10 @@ const RegisterPage = () => {
                   <div className="relative  border rounded">
                     <input
                       type="text"
+                      name="firstName"
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Enter password"
+                      required
                     />
                   </div>
                 </div>
@@ -55,8 +103,10 @@ const RegisterPage = () => {
                   <div className="relative  border rounded">
                     <input
                       type="text"
+                      name="lastName"
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                      placeholder="Enter password"
+                      placeholder="Enter Last Name"
+                      required
                     />
                   </div>
                 </div>
@@ -73,8 +123,10 @@ const RegisterPage = () => {
                   <div className="relative border rounded">
                     <input
                       type="email"
+                      name="email"
                       className="w-full rounded-lg border-gray-300 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Enter email"
+                      required
                     />
 
                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -108,8 +160,10 @@ const RegisterPage = () => {
                   <div className="relative  border rounded">
                     <input
                       type="password"
+                      name="password"
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Enter password"
+                      required
                     />
                   </div>
                 </div>
@@ -129,6 +183,7 @@ const RegisterPage = () => {
                       name="password_confirmation"
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Enter password_confirmation"
+                      required
                     />
                   </div>
                 </div>
@@ -144,8 +199,10 @@ const RegisterPage = () => {
                   <div className="relative border rounded">
                     <input
                       type="file"
+                      name="imgUrl"
                       className="w-full rounded-lg border-gray-300 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Enter email"
+                      required
                     />
                   </div>
                 </div>
@@ -176,10 +233,12 @@ const RegisterPage = () => {
                     <Link href="/login" className="text-gray-700 underline">
                       Log in
                     </Link>
-                    .
                   </p>
                 </div>
               </form>
+              <div className="text-red-400 text-center my-4">
+                {registerError}
+              </div>
             </div>
           </main>
         </div>

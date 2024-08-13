@@ -1,10 +1,23 @@
-"use client";
+import Image from "next/image";
 import Link from "next/link";
 
 const LoginPage = () => {
   return (
-    <div className="mt-10 min-h-screen">
-      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
+    <div className="mt-4 min-h-screen">
+      <div>
+        <div className="w-60 h-full">
+          <Link href={"/"}>
+            <Image
+              src="https://i.ibb.co/xzg7M5N/Thyrocare.webp"
+              alt="Thyrocare Image"
+              layout="responsive"
+              width={500}
+              height={300}
+            />
+          </Link>
+        </div>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-4 py-10 sm:px-6 lg:px-8 ">
         <div className="mx-auto max-w-lg">
           <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
             Welcome Back!

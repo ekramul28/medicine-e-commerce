@@ -1,9 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const RegisterPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className=" mt-4 min-h-screen">
+      <div className="w-60 h-full">
+        <Link href={"/"}>
+          <Image
+            src="https://i.ibb.co/xzg7M5N/Thyrocare.webp"
+            alt="Thyrocare Image"
+            layout="responsive"
+            width={500}
+            height={300}
+          />
+        </Link>
+      </div>
       <section className="bg-white">
         <div className="lg:grid lg:min-h-screen ">
           <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">

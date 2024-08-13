@@ -1,15 +1,21 @@
 "use client";
 import imageUpload from "@/api/imageUp/ImageUp";
-import { useCreateUserMutation } from "@/Redux/features/Auth/authApi";
+import {
+  useCreateUserMutation,
+  useLoginUserMutation,
+} from "@/Redux/features/Auth/authApi";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [registerError, setRegisterError] = useState("");
-  const [createUser] = useCreateUserMutation();
-
+  const [createUser, { isLoading }] = useCreateUserMutation();
+  const [loginUser] = useLoginUserMutation();
+  const pathname = usePathname();
   const handelForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -21,27 +27,28 @@ const RegisterPage = () => {
     const photoFile = form.imgUrl.files[0];
 
     setRegisterError("");
-    if (password.length < 6) {
-      return toast("Password must be at least 6 characters");
-    }
-    if (!/[A-Z]/.test(password)) {
-      return toast("Password must be a Uppercase letter");
-    }
-    if (!/[a-z]/.test(password)) {
-      return toast("Password must be a Lowercase letter");
-    }
-    if (!/[0-9]/.test(password)) {
-      return toast("Password must be a number ");
-    }
-    if (!(password == confirmPassword)) {
-      return toast("password or confirmPassword not equal ");
-    }
     try {
       const image = await imageUpload(photoFile);
-      console.log(image);
-      const userCreate = await createUser(ok);
-      //  const imageUrl=image.
-      // const result = await register(email, password);
+      const imageUrl = image?.data?.url;
+      const createUserData = {
+        fastName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        imageUrl,
+      };
+      const userCreate = await createUser(createUserData);
+      console.log(userCreate);
+      if (userCreate?.error) {
+        setRegisterError((userCreate?.error as any).data.message);
+      }
+      if (userCreate?.data?.success) {
+        loginUser({ email, password });
+        form.reset();
+        toast("Register Successfully");
+        window.location.href = pathname ? pathname : "/";
+      }
     } catch (error) {
       setRegisterError((error as any).message);
     }
@@ -225,7 +232,7 @@ const RegisterPage = () => {
 
                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                   <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-                    Create an account
+                    {isLoading ? "Loading..." : "Create an account"}
                   </button>
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
@@ -236,7 +243,7 @@ const RegisterPage = () => {
                   </p>
                 </div>
               </form>
-              <div className="text-red-400 text-center my-4">
+              <div className="text-red-400 text-center my-4 text-sm font-medium">
                 {registerError}
               </div>
             </div>

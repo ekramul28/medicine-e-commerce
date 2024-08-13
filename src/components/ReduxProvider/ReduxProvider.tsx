@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { PersistGate } from "redux-persist/integration/react";
-
+import "react-toastify/dist/ReactToastify.css";
 interface ReduxProviderProps {
   children: ReactNode;
 }

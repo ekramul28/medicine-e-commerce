@@ -16,11 +16,7 @@ const Medicine = () => {
     },
   ]);
   const products: TProduct[] = data?.data?.result;
-  const meta: TMeta[] = data?.data?.meta;
-
-  //   if (isLoading) {
-  //     return <LoadingSpinner size={400} color="#3498db" strokeWidth={3} />;
-  //   }
+  const meta: TMeta = data?.data?.meta;
 
   if (error) {
     return <p>Error: {error as any}</p>;
@@ -28,7 +24,7 @@ const Medicine = () => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-  const totalPages = meta?.totalPage as any;
+  const totalPages = meta.totalPage;
   return (
     <div className="mt-36 ">
       <div className=" grid lg:grid-cols-4 md:grid-cols-3 gap-2 items-center mx-2 min-h-screen ">

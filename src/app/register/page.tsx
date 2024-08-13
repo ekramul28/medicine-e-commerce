@@ -4,23 +4,27 @@ import {
   useCreateUserMutation,
   useLoginUserMutation,
 } from "@/Redux/features/Auth/authApi";
+import { setUser, TUser } from "@/Redux/features/Auth/authSlice";
+import { useAppDispatch } from "@/Redux/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { verifyToken } from "../cards/verifyToken";
 
 const RegisterPage = () => {
   const [registerError, setRegisterError] = useState("");
   const [createUser, { isLoading }] = useCreateUserMutation();
   const [loginUser] = useLoginUserMutation();
-  const pathname = usePathname();
+  const dispatch = useAppDispatch();
+
   const handelForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const fastName = form.firstName.value;
-    const lastName = form.lastName.value;
+    const phoneNo = form.number.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.password_confirmation.value;
@@ -32,7 +36,7 @@ const RegisterPage = () => {
       const imageUrl = image?.data?.url;
       const createUserData = {
         fastName,
-        lastName,
+        phoneNo,
         email,
         password,
         confirmPassword,
@@ -44,10 +48,15 @@ const RegisterPage = () => {
         setRegisterError((userCreate?.error as any).data.message);
       }
       if (userCreate?.data?.success) {
-        loginUser({ email, password });
+        const result = await loginUser({ email, password }).unwrap();
+        if (result?.success) {
+          const user = verifyToken(result.data.accessToken) as TUser;
+          console.log({ user });
+          dispatch(setUser({ user: user, token: result.data.accessToken }));
+        }
         form.reset();
+        window.location.href = "/";
         toast("Register Successfully");
-        window.location.href = pathname ? pathname : "/";
       }
     } catch (error) {
       setRegisterError((error as any).message);
@@ -85,7 +94,7 @@ const RegisterPage = () => {
                     htmlFor="FirstName"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    First Name
+                    Full Name
                   </label>
 
                   <div className="relative  border rounded">
@@ -104,15 +113,15 @@ const RegisterPage = () => {
                     htmlFor="LastName"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Last Name
+                    phoneNo
                   </label>
 
                   <div className="relative  border rounded">
                     <input
                       type="text"
-                      name="lastName"
+                      name="number"
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                      placeholder="Enter Last Name"
+                      placeholder="Enter Last Number"
                       required
                     />
                   </div>

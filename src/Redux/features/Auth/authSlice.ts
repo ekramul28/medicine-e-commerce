@@ -4,6 +4,8 @@ export type TUser = {
   userId: string;
   role: string;
   email: string;
+  phoneNo: string;
+  imageUrl: string;
   iat: number;
   exp: number;
 };

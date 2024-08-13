@@ -1,7 +1,42 @@
+"use client";
+import { useLoginUserMutation } from "@/Redux/features/Auth/authApi";
+import { useAppDispatch } from "@/Redux/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { verifyToken } from "../cards/verifyToken";
+import { setUser, TUser } from "@/Redux/features/Auth/authSlice";
 
 const LoginPage = () => {
+  const [loginUser] = useLoginUserMutation();
+  const dispatch = useAppDispatch();
+
+  const [loginError, setLoginError] = useState("");
+
+  const handelForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const result = await loginUser({ email, password }).unwrap();
+      if (result?.success) {
+        const user = verifyToken(result.data.accessToken) as TUser;
+        console.log({ user });
+        dispatch(setUser({ user: user, token: result.data.accessToken }));
+      }
+      if (result?.error) {
+        console.log(result?.error?.data?.message);
+        //    setLoginError(result?.error?.data?.message);
+      }
+      form.reset();
+      window.location.href = "/";
+      toast("Login Successfully");
+    } catch (error) {
+      setLoginError(error as any);
+    }
+  };
   return (
     <div className="mt-4 min-h-screen">
       <div>
@@ -30,7 +65,7 @@ const LoginPage = () => {
           </p>
 
           <form
-            action="#"
+            onSubmit={handelForm}
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 border-t-2"
           >
             <p className="text-center text-lg font-medium">
@@ -45,6 +80,7 @@ const LoginPage = () => {
               <div className="relative border rounded">
                 <input
                   type="email"
+                  name="email"
                   className="w-full rounded-lg border-gray-300 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter email"
                 />
@@ -76,6 +112,7 @@ const LoginPage = () => {
               <div className="relative  border rounded">
                 <input
                   type="password"
+                  name="password"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
                 />
@@ -118,6 +155,9 @@ const LoginPage = () => {
                 Sign up
               </Link>
             </p>
+            <div className="text-red-400 text-center my-4 text-sm font-medium">
+              {loginError}
+            </div>
           </form>
         </div>
       </div>

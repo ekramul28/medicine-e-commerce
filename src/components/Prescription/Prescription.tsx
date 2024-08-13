@@ -20,7 +20,7 @@ const Prescription = () => {
             <p className="font-normal text-sm py-4">
               Upload prescription and we will deliver your medicines
             </p>
-            <button className="flex items-center gap-2 my-2  bg-[#4F46E5] rounded px-6 py-2 text-sm font-bold uppercase  text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+            <button className="flex items-center gap-2 my-2  bg-black rounded px-6 py-2 text-sm font-bold uppercase  text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
               <svg
                 width={24}
                 height={24}

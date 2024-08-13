@@ -95,7 +95,7 @@ const Navbar = () => {
                     />
                   </div>
 
-                  <button className="mt-1 w-full bg-[#4F46E5] rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+                  <button className="mt-1 w-full bg-black rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
                     Search
                   </button>
                 </div>

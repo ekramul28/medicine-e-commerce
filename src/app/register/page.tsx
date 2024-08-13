@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { verifyToken } from "../cards/verifyToken";
+import { verifyToken } from "../../api/imageUp/verifyToken";
 import {
   useCreateUserMutation,
   useLoginUserMutation,

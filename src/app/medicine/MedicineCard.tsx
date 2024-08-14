@@ -31,7 +31,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ product }) => {
           </p>
 
           <p className="font-semibold flex">
-            ₹ 841 <span className="text-red-500">({product?.discount})%</span>
+            <span className="text-red-500">( ₹ {product?.discount})%</span>
           </p>
 
           <Link

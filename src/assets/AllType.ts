@@ -19,3 +19,15 @@ export type TMeta = {
   limit: number;
   total: number;
 };
+
+export type TCart = {
+  _id: string;
+  product: TProduct;
+  productQuantity: number;
+  email: string;
+  discountedPrice: number;
+  OfferPrice: number;
+  phoneNo: string;
+  createdAt?: number;
+  updatedAt?: number;
+};

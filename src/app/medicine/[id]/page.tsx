@@ -61,12 +61,12 @@ const DetailsPage = () => {
       phoneNo: user?.phoneNo,
     };
     if (quantity === 0) {
-      return toast.error("Product quantity is 0");
+      return toast.error("Product quantity is 0", { position: "top-left" });
     }
     try {
       const result = await addProduct(data);
       if (result?.data?.success) {
-        toast.success("Product Add Successfully");
+        toast.success("Product Add Successfully", { position: "top-left" });
       }
 
       const error = result?.error;

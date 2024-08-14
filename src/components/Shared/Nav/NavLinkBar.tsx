@@ -14,6 +14,7 @@ const NavLinkBar = () => {
     { nav: "Healthcare", route: "/healthcare" },
     { nav: "Health Blogs", route: "/healthblogs" },
     { nav: "Offers", route: "/offers" },
+    { nav: "Dashboard", route: "/dashboard" },
   ];
 
   return (

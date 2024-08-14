@@ -1,5 +1,8 @@
 "use client";
-import { useAddProductMutation } from "@/app/redux/features/cart/cartApi";
+import {
+  useAddProductMutation,
+  useUpdateProductCartMutation,
+} from "@/app/redux/features/cart/cartApi";
 import { useSingleProductQuery } from "@/app/redux/features/products/productApi";
 import { useAppSelector } from "@/app/redux/hooks";
 import { RootState } from "@/app/redux/store";
@@ -21,6 +24,8 @@ const DetailsPage = () => {
   const { data } = useSingleProductQuery(id);
   const [quantity, setQuantity] = useState(0);
   const [addProduct] = useAddProductMutation();
+  const [updateProductCart] = useUpdateProductCartMutation();
+
   const user = useAppSelector((state: RootState) => state.auth.user);
 
   const product = data?.data;
@@ -65,6 +70,13 @@ const DetailsPage = () => {
     }
     try {
       const result = await addProduct(data);
+      const updateData = {
+        _id,
+        data: {
+          availableQuantity: quantity,
+        },
+      };
+      const update = await updateProductCart(updateData);
       if (result?.data?.success) {
         toast.success("Product Add Successfully");
       }

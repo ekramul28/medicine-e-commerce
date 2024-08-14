@@ -23,7 +23,11 @@ const Navbar = () => {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50  bg-white shadow-lg ${
-        pathname === "/login" || pathname === "/register" ? "hidden" : ""
+        pathname === "/login" ||
+        pathname === "/register" ||
+        pathname === "/dashboard"
+          ? "hidden"
+          : ""
       }`}
     >
       <div className=" h-12 md:h-20 flex justify-center items-center ">

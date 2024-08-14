@@ -10,7 +10,11 @@ const Footer = () => {
   return (
     <div
       className={`mt-8 ${
-        pathname === "/login" || pathname === "/register" ? "hidden" : ""
+        pathname === "/login" ||
+        pathname === "/register" ||
+        pathname === "/dashboard"
+          ? "hidden"
+          : ""
       }`}
     >
       <footer className="bg-[#EEF4FF]">

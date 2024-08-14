@@ -21,13 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div>
-          <Providers>
-            <Navbar />
-            <div className="max-w-screen-xl mx-auto">
-              {children}
-              <Footer />
-            </div>
-          </Providers>
+          <Providers>{children}</Providers>
         </div>
       </body>
     </html>

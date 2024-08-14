@@ -1,4 +1,3 @@
-"use client";
 import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import authReducer from "./features/Auth/authSlice";

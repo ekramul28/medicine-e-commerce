@@ -1,17 +1,27 @@
 "use client";
+import { useAddProductMutation } from "@/app/redux/features/cart/cartApi";
 import { useSingleProductQuery } from "@/app/redux/features/products/productApi";
+import { useAppSelector } from "@/app/redux/hooks";
+import { RootState } from "@/app/redux/store";
 import StarIcon from "@/assets/StarIcon";
 import OfferCategories from "@/components/OfferCategories/OfferCategories";
 import ReadOnlyRating from "@/components/Rating/Rating";
 import Button from "@/components/Shared/Button";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
+import { toast } from "react-toastify";
+interface ErrorResponse {
+  message: string;
+}
 const DetailsPage = () => {
   const { id } = useParams();
   const { data } = useSingleProductQuery(id);
   const [quantity, setQuantity] = useState(0);
+  const [addProduct] = useAddProductMutation();
+  const user = useAppSelector((state: RootState) => state.auth.user);
 
   const product = data?.data;
   const image = data?.data?.image;
@@ -43,8 +53,43 @@ const DetailsPage = () => {
     });
   };
 
-  const handleAddToCart = () => {
-    // Your add to cart logic here
+  const handleAddToCart = async (_id: string) => {
+    const data = {
+      product: _id,
+      productQuantity: quantity | 0,
+      email: user?.email,
+      phoneNo: user?.phoneNo,
+    };
+    if (quantity === 0) {
+      return toast.error("Product quantity is 0");
+    }
+    try {
+      const result = await addProduct(data);
+      if (result?.data?.success) {
+        toast.success("Product Add Successfully");
+      }
+
+      const error = result?.error;
+
+      const fetchError = error as FetchBaseQueryError;
+
+      const res = fetchError?.data as ErrorResponse;
+      const message = res?.message;
+      console.log(message);
+      if (message === "login  first") {
+        window.location.href = "/login";
+        toast.error("login first");
+        return;
+      }
+
+      if (error) {
+        toast.error("Already Added");
+      }
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+    //  if(result.data)
   };
 
   return (
@@ -67,7 +112,10 @@ const DetailsPage = () => {
                 }}
               >
                 {image?.map((data: string, index: number) => (
-                  <div key={index} className="w-full h-full flex-shrink-0">
+                  <div
+                    key={index}
+                    className="w-full pr-6 h-[500px] flex-shrink-0"
+                  >
                     <Image
                       src={data}
                       alt="healthtitle"
@@ -80,7 +128,7 @@ const DetailsPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-2 md:col-span-2 ">
+          <div className="flex flex-col gap-2 mx-2 md:col-span-2 ">
             <h1 className="text-4xl font-bold">{product?.title}</h1>
             <p className="font-clashRegular text-gray-600 text-sm">
               {product?.brand}
@@ -122,7 +170,10 @@ const DetailsPage = () => {
             </div>
             {/* Wishlist */}
             <div className="flex flex-col gap-2 mt-10">
-              <Button onClick={handleAddToCart} className="py-2 text-white">
+              <Button
+                onClick={() => handleAddToCart(product._id)}
+                className="py-2 text-white"
+              >
                 Add To Cart
               </Button>
             </div>

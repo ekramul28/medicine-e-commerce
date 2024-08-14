@@ -53,7 +53,7 @@ const RegisterPage = () => {
         }
         form.reset();
         window.location.href = "/";
-        toast("Register Successfully");
+        toast.success("Register Successfully");
       }
     } catch (error) {
       setRegisterError((error as any).message);

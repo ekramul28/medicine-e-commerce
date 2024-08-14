@@ -15,9 +15,11 @@ const Medicine = () => {
       value: currentPage,
     },
   ]);
+  if (!data || !data.data) return <p>No data found</p>;
   const products: TProduct[] = data?.data?.result;
   const meta: TMeta = data?.data?.meta;
-
+  console.log(data);
+  console.log(error);
   if (error) {
     return <p>Error: {error as any}</p>;
   }

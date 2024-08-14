@@ -19,8 +19,10 @@ const LoginPage = () => {
     const form = e.target as HTMLFormElement;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(password, email);
     try {
       const result = await loginUser({ email, password }).unwrap();
+      console.log(result);
       if (result?.success) {
         const user = verifyToken(result.data.accessToken) as TUser;
         console.log({ user });
@@ -28,13 +30,13 @@ const LoginPage = () => {
       }
       if (result?.error) {
         console.log(result?.error?.data?.message);
-        //    setLoginError(result?.error?.data?.message);
+        setLoginError(result?.error?.data?.message);
       }
       form.reset();
       window.location.href = "/";
       toast("Login Successfully");
     } catch (error) {
-      setLoginError(error as any);
+      setLoginError((error as any).data.message);
     }
   };
   return (

@@ -4,14 +4,12 @@ import { ReactNode } from "react";
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <div className="grid  min-h-screen">
-        <div>
+      <div className="grid grid-cols-12 min-h-screen">
+        <div className="col-span-2">
           <SideBar />
         </div>
 
-        <div className="col-span-12 lg:col-span-11 mt-14 md:mt-0">
-          {children}
-        </div>
+        <div className="col-span-12 lg:col-span-10 ml-3">{children}</div>
       </div>
     </>
   );

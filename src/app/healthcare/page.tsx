@@ -8,19 +8,20 @@ const Healthcare = () => {
           <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
             <div className="lg:col-span-2 lg:py-12">
               <p className="max-w-xl text-lg">
-                At the same time, the fact that we are wholly owned and totally
-                independent from manufacturer and other group control gives you
-                confidence that we will only recommend what is right for you.
+                Welcome to our comprehensive e-commerce platform, your one-stop
+                solution for all healthcare and medicine needs. We offer a wide
+                range of pharmaceuticals, ensuring that you have access to
+                essential medications at competitive prices.
               </p>
 
               <div className="mt-8">
                 <a href="#" className="text-2xl font-bold text-pink-600">
                   {" "}
-                  0151 475 4450{" "}
+                  +8801762477828{" "}
                 </a>
 
                 <address className="mt-2 not-italic">
-                  282 Kevin Brook, Imogeneborough, CA 58517
+                  282 khulna, jessore, CA 517
                 </address>
               </div>
             </div>
@@ -32,7 +33,7 @@ const Healthcare = () => {
                     Name
                   </label>
                   <input
-                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                    className="w-full rounded-lg border-2 p-3 text-sm"
                     placeholder="Name"
                     type="text"
                     id="name"
@@ -45,7 +46,7 @@ const Healthcare = () => {
                       Email
                     </label>
                     <input
-                      className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                      className="w-full rounded-lg border-2  p-3 text-sm"
                       placeholder="Email address"
                       type="email"
                       id="email"
@@ -57,7 +58,7 @@ const Healthcare = () => {
                       Phone
                     </label>
                     <input
-                      className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                      className="w-full rounded-lg border-2  p-3 text-sm"
                       placeholder="Phone Number"
                       type="tel"
                       id="phone"
@@ -80,7 +81,7 @@ const Healthcare = () => {
                         name="option"
                       />
 
-                      <span className="text-sm"> Option 1 </span>
+                      <span className="text-sm"> Emergency Care </span>
                     </label>
                   </div>
 
@@ -98,7 +99,7 @@ const Healthcare = () => {
                         name="option"
                       />
 
-                      <span className="text-sm"> Option 2 </span>
+                      <span className="text-sm"> Chronic Care </span>
                     </label>
                   </div>
 
@@ -116,7 +117,7 @@ const Healthcare = () => {
                         name="option"
                       />
 
-                      <span className="text-sm"> Option 3 </span>
+                      <span className="text-sm"> Wellness Care </span>
                     </label>
                   </div>
                 </div>
@@ -127,7 +128,7 @@ const Healthcare = () => {
                   </label>
 
                   <textarea
-                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
+                    className="w-full rounded-lg border-2  p-3 text-sm"
                     placeholder="Message"
                     rows="8"
                     id="message"

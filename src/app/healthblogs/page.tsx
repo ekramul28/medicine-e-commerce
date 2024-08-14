@@ -2,41 +2,81 @@ import React from "react";
 
 const HealthBlogs = () => {
   return (
-    <div className="mt-32">
-      <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          className="h-56 w-full object-cover"
-        />
-
-        <div className="p-4 sm:p-6">
-          <a href="#">
-            <h3 className="text-lg font-medium text-gray-900">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </h3>
-          </a>
-
-          <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-            dolores, possimus pariatur animi temporibus nesciunt praesentium
-            dolore sed nulla ipsum eveniet corporis quidem, mollitia itaque
-            minus soluta, voluptates neque explicabo tempora nisi culpa eius
-            atque dignissimos. Molestias explicabo corporis voluptatem?
-          </p>
-
-          <a
-            href="#"
-            className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
+    <div className="mt-36 grid md:grid-cols-2 gap-2">
+      <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8">
+        <div className="flex items-start sm:gap-8">
+          <div
+            className="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500"
+            aria-hidden="true"
           >
-            Find out more
-            <span
-              aria-hidden="true"
-              className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-            >
-              &rarr;
-            </span>
-          </a>
+            <div className="flex items-center gap-1">
+              <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
+              <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
+              <span className="h-4 w-0.5 rounded-full bg-indigo-500"></span>
+              <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
+              <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
+            </div>
+          </div>
+
+          <div>
+            <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 text-[10px] font-medium text-white">
+              Episode #101
+            </strong>
+
+            <h3 className="mt-4 text-lg font-medium sm:text-xl">
+              <a href="#" className="hover:underline">
+                {" "}
+                Some Interesting Podcast Title{" "}
+              </a>
+            </h3>
+
+            <p className="mt-1 text-sm text-gray-700">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+              nulla amet voluptatum sit rerum, atque, quo culpa ut
+              necessitatibus eius suscipit eum accusamus, aperiam voluptas
+              exercitationem facere aliquid fuga. Sint.
+            </p>
+
+            <div className="mt-4 sm:flex sm:items-center sm:gap-2">
+              <div className="flex items-center gap-1 text-gray-500">
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+
+                <p className="text-xs font-medium">48:32 minutes</p>
+              </div>
+
+              <span className="hidden sm:block" aria-hidden="true">
+                &middot;
+              </span>
+
+              <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
+                Featuring{" "}
+                <a href="#" className="underline hover:text-gray-700">
+                  Barry
+                </a>
+                ,
+                <a href="#" className="underline hover:text-gray-700">
+                  Sandra
+                </a>{" "}
+                and
+                <a href="#" className="underline hover:text-gray-700">
+                  August
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </article>
     </div>

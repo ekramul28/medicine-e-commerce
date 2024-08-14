@@ -1,84 +1,60 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { useProductQuery } from "../redux/features/products/productApi";
+import { TMeta, TProduct } from "@/assets/AllType";
+import MedicineCard from "../medicine/MedicineCard";
+import LoadingSpinner from "@/components/Loding/Loding";
+import CustomPagination from "@/components/Pagination/Pagination";
 
 const Offers = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, isLoading, error } = useProductQuery([
+    {
+      name: "page",
+      value: currentPage,
+    },
+  ]);
+  if (!data || !data.data) return <p>No data found</p>;
+  const products: TProduct[] = data?.data?.result;
+  const offerProduct: TProduct[] = products.filter(
+    (product) => product.offer === true
+  );
+  const meta: TMeta = data?.data?.meta;
+  console.log(meta);
+  console.log(error);
+  if (error) {
+    return <p>Error: {error as any}</p>;
+  }
+  console.log(products);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+  const total = offerProduct.length;
+  const limit = meta.limit;
+  const totalPages = Math.ceil(total / limit);
+  console.log(total);
+
   return (
-    <div className="mt-36">
-      <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8">
-        <div className="flex items-start sm:gap-8">
-          <div
-            className="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500"
-            aria-hidden="true"
-          >
-            <div className="flex items-center gap-1">
-              <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
-              <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
-              <span className="h-4 w-0.5 rounded-full bg-indigo-500"></span>
-              <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
-              <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
-            </div>
+    <div className="mt-20 ">
+      <div className=" grid lg:grid-cols-4 md:grid-cols-3 gap-2 items-center mx-2 min-h-screen ">
+        {isLoading ? (
+          <div className="flex justify-center items-center w-full h-screen">
+            <LoadingSpinner size={200} color="#3498db" strokeWidth={3} />
           </div>
-
-          <div>
-            <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 text-[10px] font-medium text-white">
-              Episode #101
-            </strong>
-
-            <h3 className="mt-4 text-lg font-medium sm:text-xl">
-              <a href="#" className="hover:underline">
-                {" "}
-                Some Interesting Podcast Title{" "}
-              </a>
-            </h3>
-
-            <p className="mt-1 text-sm text-gray-700">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-              nulla amet voluptatum sit rerum, atque, quo culpa ut
-              necessitatibus eius suscipit eum accusamus, aperiam voluptas
-              exercitationem facere aliquid fuga. Sint.
-            </p>
-
-            <div className="mt-4 sm:flex sm:items-center sm:gap-2">
-              <div className="flex items-center gap-1 text-gray-500">
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-
-                <p className="text-xs font-medium">48:32 minutes</p>
-              </div>
-
-              <span className="hidden sm:block" aria-hidden="true">
-                &middot;
-              </span>
-
-              <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                Featuring{" "}
-                <a href="#" className="underline hover:text-gray-700">
-                  Barry
-                </a>
-                ,
-                <a href="#" className="underline hover:text-gray-700">
-                  Sandra
-                </a>{" "}
-                and
-                <a href="#" className="underline hover:text-gray-700">
-                  August
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
+        ) : (
+          offerProduct?.map((product) => (
+            <MedicineCard key={product._id} product={product} />
+          ))
+        )}
+      </div>
+      <div className="flex justify-center items-center my-7">
+        <CustomPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

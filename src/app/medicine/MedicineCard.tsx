@@ -7,7 +7,7 @@ interface MedicineCardProps {
 const MedicineCard: React.FC<MedicineCardProps> = ({ product }) => {
   return (
     <div>
-      <article className="overflow-hidden rounded-lg border-2 border-gray-100 bg-white shadow-sm w-full h-[400px]">
+      <article className="overflow-hidden rounded-lg border-2 border-gray-100 bg-white shadow-sm w-full h-[450px]">
         <div className="flex justify-center items-center">
           <Image
             alt=""
@@ -19,21 +19,30 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ product }) => {
         </div>
 
         <div className="p-4 sm:p-6 ">
-          <a href="#">
-            <p className="text-lg font-bold text-gray-900">
-              {product?.title.length > 50
-                ? `${product.title.slice(0, 50)}...`
-                : product.title}
-            </p>
-          </a>
+          <p className="text-lg font-bold text-gray-900">
+            {product?.title.length > 50
+              ? `${product.title.slice(0, 50)}...`
+              : product.title}
+          </p>
+
           <p className="text-gray-400">
             ₹ MRP <span className="line-through">{product?.price}</span>
           </p>
 
           <p className="font-semibold flex">
-            <span className="text-red-500">( ₹ {product?.discount})%</span>
+            <span
+              className={`${
+                product.offer ? "line-through text-gray-500" : ""
+              }text-red-500`}
+            >
+              ( Discount: {product?.discount})%
+            </span>
           </p>
-
+          <p className="mt-3 font-medium text-red-500">
+            {product?.offerDiscount
+              ? `OfferDiscount: ${product?.offerDiscount}%`
+              : ""}
+          </p>
           <Link
             href={`medicine/${product._id}`}
             className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"

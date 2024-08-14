@@ -1,4 +1,3 @@
-"use client";
 import { baseApi } from "../../api/baseApi";
 export type TProduct = {
   _id: string;
@@ -10,8 +9,8 @@ export type TProduct = {
   price: number;
   rating: number;
   description: string;
-  keyboardType: string;
   offerPrice?: number;
+  discount: number;
   offer?: boolean;
   isDeleted?: boolean;
 };

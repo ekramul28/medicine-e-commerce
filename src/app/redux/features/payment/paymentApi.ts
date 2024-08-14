@@ -1,4 +1,3 @@
-"use client";
 import { baseApi } from "../../api/baseApi";
 
 const PaymentApi = baseApi.injectEndpoints({

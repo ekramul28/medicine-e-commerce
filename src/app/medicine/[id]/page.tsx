@@ -1,6 +1,8 @@
 "use client";
 import { useSingleProductQuery } from "@/app/redux/features/products/productApi";
+import StarIcon from "@/assets/StarIcon";
 import OfferCategories from "@/components/OfferCategories/OfferCategories";
+import ReadOnlyRating from "@/components/Rating/Rating";
 import Button from "@/components/Shared/Button";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -9,11 +11,10 @@ import React, { useEffect, useState } from "react";
 const DetailsPage = () => {
   const { id } = useParams();
   const { data } = useSingleProductQuery(id);
+  const [quantity, setQuantity] = useState(0);
 
-  console.log(data);
   const product = data?.data;
   const image = data?.data?.image;
-  console.log(product);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideInterval = 3000;
@@ -22,15 +23,30 @@ const DetailsPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === image?.length ? 0 : prevIndex + 1
+        prevIndex === (image?.length ?? 1) - 1 ? 0 : prevIndex + 1
       );
     }, slideInterval);
 
     return () => clearInterval(interval);
   }, [image?.length]);
 
-  const handleQuantity = () => {};
-  const handleAddToCart = () => {};
+  const handleQuantity = (operation: "+" | "-") => {
+    setQuantity((prevQuantity) => {
+      if (operation === "+") {
+        if (prevQuantity < (product?.availableQuantity ?? 0)) {
+          return prevQuantity + 1;
+        }
+      } else if (operation === "-" && prevQuantity > 0) {
+        return prevQuantity - 1;
+      }
+      return prevQuantity;
+    });
+  };
+
+  const handleAddToCart = () => {
+    // Your add to cart logic here
+  };
+
   return (
     <div className="mt-36">
       <div className="min-h-screen font-poppins">
@@ -45,7 +61,7 @@ const DetailsPage = () => {
           <div className="md:col-span-3 text-center">
             <div className="overflow-hidden">
               <div
-                className="flex gap-3  transition-transform duration-500 ease-out justify-center items-center"
+                className="flex gap-3 transition-transform duration-500 ease-out justify-center items-center"
                 style={{
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
@@ -66,21 +82,29 @@ const DetailsPage = () => {
           </div>
           <div className="flex flex-col gap-2 md:col-span-2 ">
             <h1 className="text-4xl font-bold">{product?.title}</h1>
-            <p className="  font-clashRegular text-gray-600 text-sm">
+            <p className="font-clashRegular text-gray-600 text-sm">
               {product?.brand}
             </p>
             <div className="flex justify-between items-center">
               <p className="text-xl font-semibold">${product?.price}</p>
-              {product?.rating}
+              <ReadOnlyRating count={5} value={4} color="black" />
             </div>
             <p className="text-sm mt-10 text-gray-600">
               {product?.description}
             </p>
-            <p className="mt-3 font-medium">Discount:{product?.discount}%</p>
+            <p className="mt-3 font-medium">Discount: {product?.discount}%</p>
             <p className="mt-3 font-medium">
-              OfferPrice:{product?.offerPrice}%
+              {product?.offerDiscount
+                ? `OfferDiscount: ${product?.offerDiscount}%`
+                : ""}
             </p>
-            {/* Quantity  */}
+            <div className="flex items-center gap-3">
+              <p>Available Quantity:</p>
+              <p className="px-5 py-1 font-semibold border">
+                {product?.availableQuantity - quantity}
+              </p>
+            </div>
+            {/* Quantity */}
             <div className="flex items-center gap-4 mt-3">
               <p
                 onClick={() => handleQuantity("-")}
@@ -88,12 +112,10 @@ const DetailsPage = () => {
               >
                 -
               </p>
-              <p className="px-5 py-1 font-semibold border ">
-                {product?.availableQuantity}
-              </p>
+              <p className="px-5 py-1 font-semibold border">{quantity}</p>
               <p
                 onClick={() => handleQuantity("+")}
-                className=" w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
+                className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
               >
                 +
               </p>
@@ -103,53 +125,9 @@ const DetailsPage = () => {
               <Button onClick={handleAddToCart} className="py-2 text-white">
                 Add To Cart
               </Button>
-              {/* <Button
-              onClick={handleBookmarked}
-              className="py-2 text-black bg-white border border-black"
-            >
-              Save To Wishlist
-            </Button> */}
             </div>
           </div>
         </div>
-        {/* <Reviews productId={_id} /> */}
-
-        {/* <SectionHeader title="You may like" /> */}
-        {/* Similar Products */}
-
-        {/* <Container className="mb-28">
-        <Swiper
-          // slidesPerView={"auto"}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper "
-          style={{
-            height: "400px",
-          }}
-          breakpoints={{
-            640: {
-              width: 640,
-              slidesPerView: 1,
-            },
-
-            768: {
-              width: 768,
-              slidesPerView: 2,
-            },
-          }}
-        >
-          {/* <SwiperSlide className="h-[100px]">Slide 1</SwiperSlide> */}
-
-        {/* {suggestions?.map((product) => (
-            <SwiperSlide key={product?._id} className="h-[100px]">
-              <ProductCarouselCard product={product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        </Container> */}
       </div>
     </div>
   );

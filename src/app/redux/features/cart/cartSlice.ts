@@ -1,4 +1,3 @@
-"use client";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface cartState {

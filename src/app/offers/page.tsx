@@ -10,20 +10,14 @@ import Container from "@/components/Container/Container";
 const Offers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading, error } = useProductQuery([
-    {
-      name: "page",
-      value: currentPage,
-    },
+    { name: "filter", value: true },
   ]);
+
   const products: TProduct[] = data?.data?.result;
   const offerProduct: TProduct[] = products?.filter(
     (product) => product.offer === true
   );
   const meta: TMeta = data?.data?.meta;
-  console.log(meta);
-  console.log(error);
-
-  console.log(products);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -42,7 +36,7 @@ const Offers = () => {
               <LoadingSpinner size={200} color="#3498db" strokeWidth={3} />
             </div>
           ) : (
-            offerProduct?.map((product) => (
+            products?.map((product) => (
               <MedicineCard key={product._id} product={product} />
             ))
           )}

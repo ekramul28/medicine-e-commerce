@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const ProductForm = () => {
@@ -205,9 +206,11 @@ const ProductForm = () => {
         />
         <div className="mt-2 grid grid-cols-3 gap-2">
           {images.map((image, index) => (
-            <img
+            <Image
               key={index}
               src={image}
+              height={40}
+              width={40}
               alt={`Product Image ${index + 1}`}
               className="w-full h-auto rounded-md"
             />

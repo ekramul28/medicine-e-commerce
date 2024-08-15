@@ -10,10 +10,10 @@ const Healthcare = () => {
             <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
               <div className="lg:col-span-2 lg:py-12">
                 <p className="max-w-xl text-lg">
-                  Welcome to our comprehensive e-commerce platform, your
-                  one-stop solution for all healthcare and medicine needs. We
-                  offer a wide range of pharmaceuticals, ensuring that you have
-                  access to essential medications at competitive prices.
+                  Welcome to our Thyrocare e-commerce platform, your one-stop
+                  solution for all healthcare and medicine needs. We offer a
+                  wide range of pharmaceuticals, ensuring that you have access
+                  to essential medications at competitive prices.
                 </p>
 
                 <div className="mt-8">

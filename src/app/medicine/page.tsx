@@ -62,8 +62,8 @@ const Medicine = () => {
 
   return (
     <Container>
-      <div className="mt-36 flex">
-        <div className="w-1/4 p-4">
+      <div className="mt-36 md:flex">
+        <div className="md:w-1/4 p-4 ">
           {/* Custom Search Bar */}
           <div className="mb-4">
             <input
@@ -123,8 +123,11 @@ const Medicine = () => {
                 className="w-full p-2 border rounded"
               >
                 {/* Replace these options with your brand list */}
-                <option value="brand1">Brand 1</option>
-                <option value="brand2">Brand 2</option>
+                <option value="PharmaTrust">PharmaTrust</option>
+                <option value="HealWell Pharma">HealWell Pharma</option>
+                <option value="MediCare Pharma">MediCare Pharma</option>
+                <option value="AllerFree">HeartCare</option>
+                <option value="DiabeCare">DiabeCare</option>
               </select>
             </div>
 

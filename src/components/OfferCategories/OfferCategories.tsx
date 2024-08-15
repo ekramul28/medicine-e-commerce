@@ -14,7 +14,7 @@ const OfferCategories = () => {
     }, slideInterval);
 
     return () => clearInterval(interval);
-  }, [offer.length]);
+  }, [offer?.length]);
 
   const goToPreviousSlide = () => {
     setCurrentIndex((prevIndex) =>

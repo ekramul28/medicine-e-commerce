@@ -73,13 +73,13 @@ const Healthcare = () => {
                       <label
                         htmlFor="Option1"
                         className="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
-                        tabIndex="0"
+                        // tabIndex="0"
                       >
                         <input
                           className="sr-only"
                           id="Option1"
                           type="radio"
-                          tabIndex="-1"
+                          // tabIndex="-1"
                           name="option"
                         />
 
@@ -91,13 +91,13 @@ const Healthcare = () => {
                       <label
                         htmlFor="Option2"
                         className="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
-                        tabIndex="0"
+                        // tabIndex="0"
                       >
                         <input
                           className="sr-only"
                           id="Option2"
                           type="radio"
-                          tabIndex="-1"
+                          // tabIndex="-1"
                           name="option"
                         />
 
@@ -109,13 +109,13 @@ const Healthcare = () => {
                       <label
                         htmlFor="Option3"
                         className="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
-                        tabIndex="0"
+                        // tabIndex="0"
                       >
                         <input
                           className="sr-only"
                           id="Option3"
                           type="radio"
-                          tabIndex="-1"
+                          // tabIndex="-1"
                           name="option"
                         />
 
@@ -132,7 +132,7 @@ const Healthcare = () => {
                     <textarea
                       className="w-full rounded-lg border-2  p-3 text-sm"
                       placeholder="Message"
-                      rows="8"
+                      // rows="8"
                       id="message"
                     ></textarea>
                   </div>

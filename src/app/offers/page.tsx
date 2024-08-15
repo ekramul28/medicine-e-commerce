@@ -15,7 +15,6 @@ const Offers = () => {
       value: currentPage,
     },
   ]);
-  if (!data || !data.data) return <p>No data found</p>;
   const products: TProduct[] = data?.data?.result;
   const offerProduct: TProduct[] = products.filter(
     (product) => product.offer === true

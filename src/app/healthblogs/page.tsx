@@ -1,4 +1,5 @@
 import Container from "@/components/Container/Container";
+import Image from "next/image";
 import React from "react";
 
 const HealthBlogs = () => {
@@ -11,32 +12,37 @@ const HealthBlogs = () => {
               className="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500"
               aria-hidden="true"
             >
-              <div className="flex items-center gap-1">
-                <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
-                <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
-                <span className="h-4 w-0.5 rounded-full bg-indigo-500"></span>
-                <span className="h-6 w-0.5 rounded-full bg-indigo-500"></span>
-                <span className="h-8 w-0.5 rounded-full bg-indigo-500"></span>
+              <div className="rounded-full overflow-hidden w-24 h-24 z-20">
+                <Image
+                  src="https://i.ibb.co/nkgj5bH/istockphoto-943974286-612x612.jpg"
+                  alt="Thyrocare Image"
+                  layout="responsive"
+                  width={200}
+                  height={200}
+                  className="object-cover w-full h-full"
+                />
               </div>
             </div>
 
             <div>
               <strong className="rounded border border-indigo-500 bg-indigo-500 px-3 py-1.5 text-[10px] font-medium text-white">
-                Episode #101
+                Episode #1
               </strong>
 
               <h3 className="mt-4 text-lg font-medium sm:text-xl">
                 <a href="#" className="hover:underline">
                   {" "}
-                  Some Interesting Podcast Title{" "}
+                  Understanding Over-the-Counter (OTC) Medications{" "}
                 </a>
               </h3>
 
               <p className="mt-1 text-sm text-gray-700">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                nulla amet voluptatum sit rerum, atque, quo culpa ut
-                necessitatibus eius suscipit eum accusamus, aperiam voluptas
-                exercitationem facere aliquid fuga. Sint.
+                This blog will provide a comprehensive guide to over-the-counter
+                (OTC) medications, which are easily accessible but often
+                misunderstood. The post will explain the differences between OTC
+                and prescription drugs, focusing on their safety, effectiveness,
+                and proper use. It will cover popular OTC categories, such as
+                pain relievers, cold and flu remedies,
               </p>
 
               <div className="mt-4 sm:flex sm:items-center sm:gap-2">

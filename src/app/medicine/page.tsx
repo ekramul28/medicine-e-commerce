@@ -18,8 +18,8 @@ const Medicine = () => {
   const [discountRange, setDiscountRange] = useState([0, 100]);
   // searchTerm", "sort", "limit", "page", "fields"
   const { data, isLoading, error } = useProductQuery([
-    // { name: "searchTerm", value: searchTerm },
-    // { name: "sort", value: sortOrder },
+    { name: "searchTerm", value: searchTerm },
+    { name: "sort", value: sortOrder },
     { name: "page", value: currentPage },
     // { name: "fields", value: priceRange },
     // { name: "filter", value: offerFilter },

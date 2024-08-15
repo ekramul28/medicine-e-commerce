@@ -16,22 +16,20 @@ const Offers = () => {
     },
   ]);
   const products: TProduct[] = data?.data?.result;
-  const offerProduct: TProduct[] = products.filter(
+  const offerProduct: TProduct[] = products?.filter(
     (product) => product.offer === true
   );
   const meta: TMeta = data?.data?.meta;
   console.log(meta);
   console.log(error);
-  if (error) {
-    return <p>Error: {error as any}</p>;
-  }
+
   console.log(products);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-  const total = offerProduct.length;
-  const limit = meta.limit;
+  const total = offerProduct?.length || 8;
+  const limit = meta?.limit || 8;
   const totalPages = Math.ceil(total / limit);
   console.log(total);
 

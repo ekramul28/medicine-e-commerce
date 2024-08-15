@@ -19,7 +19,7 @@ const CartApi = baseApi.injectEndpoints({
     }),
     getAllProductPrice: builder.query({
       query: (email) => ({
-        url: `/cart/price/${email}`,
+        url: `/cart/price`,
         method: "GET",
       }),
       providesTags: ["cart2"],

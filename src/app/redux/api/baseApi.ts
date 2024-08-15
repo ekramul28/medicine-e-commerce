@@ -16,7 +16,8 @@ interface ErrorResponse {
 }
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://medicine-e-commerce-server-green.vercel.app/api/v1",
+  baseUrl: "http://localhost:5000/api/v1",
+  // baseUrl: "https://medicine-e-commerce-server-green.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -48,7 +49,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       console.log("Sending refresh token");
 
       const res = await fetch(
-        "http://localhost:5000/api/v1/auth/refresh-token",
+        "https://medicine-e-commerce-server-green.vercel.app/v1/auth/refresh-token",
         {
           method: "POST",
           credentials: "include",

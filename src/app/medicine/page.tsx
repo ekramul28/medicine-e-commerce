@@ -145,8 +145,8 @@ const Medicine = () => {
           </div>
         </div>
 
-        <div className="w-3/4">
-          <div className="grid  md:grid-cols-3 gap-2 items-center mx-2 min-h-screen">
+        <div className="lg:w-3/4">
+          <div className="grid  md:grid-cols-3 gap-2 mx-4 md:mx-0 min-h-screen">
             {isLoading ? (
               <div className="flex justify-center items-center w-full h-screen">
                 <LoadingSpinner size={200} color="#3498db" strokeWidth={3} />

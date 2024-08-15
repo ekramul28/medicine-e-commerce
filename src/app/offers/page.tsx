@@ -10,7 +10,7 @@ import Container from "@/components/Container/Container";
 const Offers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading, error } = useProductQuery([
-    { name: "filter", value: true },
+    { name: "page", value: 1 },
   ]);
 
   const products: TProduct[] = data?.data?.result;
@@ -36,7 +36,7 @@ const Offers = () => {
               <LoadingSpinner size={200} color="#3498db" strokeWidth={3} />
             </div>
           ) : (
-            products?.map((product) => (
+            offerProduct?.map((product) => (
               <MedicineCard key={product._id} product={product} />
             ))
           )}

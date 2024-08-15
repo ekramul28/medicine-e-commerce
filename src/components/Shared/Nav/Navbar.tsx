@@ -12,7 +12,6 @@ import Badge from "@/components/TotalCardCount/TotalCardCount";
 import { useGetAllProductPriceQuery } from "@/app/redux/features/cart/cartApi";
 
 const Navbar = () => {
-  const pathname = usePathname();
   const user = useAppSelector((state: RootState) => state.auth.user);
   const { data } = useGetAllProductPriceQuery(user?.email);
   const cart = data?.data?.totalCart;
@@ -21,15 +20,7 @@ const Navbar = () => {
     dispatch(logout());
   };
   return (
-    <div
-      className={`fixed top-0 left-0 w-full z-50  bg-white shadow-lg ${
-        pathname === "/login" ||
-        pathname === "/register" ||
-        pathname === "/dashboard"
-          ? "hidden"
-          : ""
-      }`}
-    >
+    <div className={`fixed top-0 left-0 w-full z-50  bg-white shadow-lg `}>
       <div className=" h-12 md:h-20 flex justify-center items-center ">
         <div className="container mx-auto  py-2 flex justify-between items-center">
           <div className="text-2xl font-bold text-black flex items-center">
@@ -115,6 +106,7 @@ const Navbar = () => {
                 <div className="flex justify-center items-center">
                   <ProfileDropdown
                     image={user?.imageUrl}
+                    role={user?.role}
                     handelLogout={handelLogout}
                   />
                 </div>

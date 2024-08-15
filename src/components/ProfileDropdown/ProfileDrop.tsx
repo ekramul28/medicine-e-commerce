@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProfileDropdown = ({
   image,
+  role,
   handelLogout,
 }: {
   image: string;
-  handelLogout: React.FC;
+  role: string;
+  handelLogout: () => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,9 +38,15 @@ const ProfileDropdown = ({
           <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             Profile
           </button>
-          <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            Settings
-          </button>
+          {role === "admin" ? (
+            <Link href={"/dashboard"}>
+              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Dashboard
+              </button>
+            </Link>
+          ) : (
+            ""
+          )}
           <button
             onClick={handelLogout}
             className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

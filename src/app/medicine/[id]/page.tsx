@@ -7,6 +7,7 @@ import { useSingleProductQuery } from "@/app/redux/features/products/productApi"
 import { useAppSelector } from "@/app/redux/hooks";
 import { RootState } from "@/app/redux/store";
 import StarIcon from "@/assets/StarIcon";
+import Container from "@/components/Container/Container";
 import OfferCategories from "@/components/OfferCategories/OfferCategories";
 import ReadOnlyRating from "@/components/Rating/Rating";
 import Button from "@/components/Shared/Button";
@@ -105,94 +106,96 @@ const DetailsPage = () => {
   };
 
   return (
-    <div className="mt-36">
-      <div className="min-h-screen font-poppins">
-        <div className="h-[250px] bg-yellow-300 bg-detail flex justify-center items-center bg-fixed">
-          <h3 className="text-gray-400 font-clashBold text-xl md:text-2xl lg:text-3xl text-center">
-            Unveiling [{product?.title}]:
-            <br /> {product?.description}
-          </h3>
-        </div>
+    <Container>
+      <div className="mt-36">
+        <div className="min-h-screen font-poppins">
+          <div className="h-[250px] bg-yellow-300 bg-detail flex justify-center items-center bg-fixed">
+            <h3 className="text-gray-400 font-clashBold text-xl md:text-2xl lg:text-3xl text-center">
+              Unveiling [{product?.title}]:
+              <br /> {product?.description}
+            </h3>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 mt-10 gap-8 md:gap-0">
-          <div className="md:col-span-3 text-center">
-            <div className="overflow-hidden">
-              <div
-                className="flex gap-3 transition-transform duration-500 ease-out justify-center items-center"
-                style={{
-                  transform: `translateX(-${currentIndex * 100}%)`,
-                }}
-              >
-                {image?.map((data: string, index: number) => (
-                  <div
-                    key={index}
-                    className="w-full pr-6 h-[500px] flex-shrink-0"
-                  >
-                    <Image
-                      src={data}
-                      alt="healthtitle"
-                      layout="responsive"
-                      width={400}
-                      height={200}
-                    />
-                  </div>
-                ))}
+          <div className="grid grid-cols-1 md:grid-cols-5 mt-10 gap-8 md:gap-0">
+            <div className="md:col-span-3 text-center">
+              <div className="overflow-hidden">
+                <div
+                  className="flex gap-3 transition-transform duration-500 ease-out justify-center items-center"
+                  style={{
+                    transform: `translateX(-${currentIndex * 100}%)`,
+                  }}
+                >
+                  {image?.map((data: string, index: number) => (
+                    <div
+                      key={index}
+                      className="w-full pr-6 h-[500px] flex-shrink-0"
+                    >
+                      <Image
+                        src={data}
+                        alt="healthtitle"
+                        layout="responsive"
+                        width={400}
+                        height={200}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-2 mx-2 md:col-span-2 ">
-            <h1 className="text-4xl font-bold">{product?.title}</h1>
-            <p className="font-clashRegular text-gray-600 text-sm">
-              {product?.brand}
-            </p>
-            <div className="flex justify-between items-center">
-              <p className="text-xl font-semibold">${product?.price}</p>
-              <ReadOnlyRating count={5} value={4} color="black" />
-            </div>
-            <p className="text-sm mt-10 text-gray-600">
-              {product?.description}
-            </p>
-            <p className="mt-3 font-medium">Discount: {product?.discount}%</p>
-            <p className="mt-3 font-medium">
-              {product?.offerDiscount
-                ? `OfferDiscount: ${product?.offerDiscount}%`
-                : ""}
-            </p>
-            <div className="flex items-center gap-3">
-              <p>Available Quantity:</p>
-              <p className="px-5 py-1 font-semibold border">
-                {product?.availableQuantity - quantity}
+            <div className="flex flex-col gap-2 mx-2 md:col-span-2 ">
+              <h1 className="text-4xl font-bold">{product?.title}</h1>
+              <p className="font-clashRegular text-gray-600 text-sm">
+                {product?.brand}
               </p>
-            </div>
-            {/* Quantity */}
-            <div className="flex items-center gap-4 mt-3">
-              <p
-                onClick={() => handleQuantity("-")}
-                className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
-              >
-                -
+              <div className="flex justify-between items-center">
+                <p className="text-xl font-semibold">${product?.price}</p>
+                <ReadOnlyRating count={5} value={4} color="black" />
+              </div>
+              <p className="text-sm mt-10 text-gray-600">
+                {product?.description}
               </p>
-              <p className="px-5 py-1 font-semibold border">{quantity}</p>
-              <p
-                onClick={() => handleQuantity("+")}
-                className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
-              >
-                +
+              <p className="mt-3 font-medium">Discount: {product?.discount}%</p>
+              <p className="mt-3 font-medium">
+                {product?.offerDiscount
+                  ? `OfferDiscount: ${product?.offerDiscount}%`
+                  : ""}
               </p>
-            </div>
-            {/* Wishlist */}
-            <div className="flex flex-col gap-2 mt-10">
-              <Button
-                onClick={() => handleAddToCart(product._id)}
-                className="py-2 text-white"
-              >
-                Add To Cart
-              </Button>
+              <div className="flex items-center gap-3">
+                <p>Available Quantity:</p>
+                <p className="px-5 py-1 font-semibold border">
+                  {product?.availableQuantity - quantity}
+                </p>
+              </div>
+              {/* Quantity */}
+              <div className="flex items-center gap-4 mt-3">
+                <p
+                  onClick={() => handleQuantity("-")}
+                  className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
+                >
+                  -
+                </p>
+                <p className="px-5 py-1 font-semibold border">{quantity}</p>
+                <p
+                  onClick={() => handleQuantity("+")}
+                  className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
+                >
+                  +
+                </p>
+              </div>
+              {/* Wishlist */}
+              <div className="flex flex-col gap-2 mt-10">
+                <Button
+                  onClick={() => handleAddToCart(product._id)}
+                  className="py-2 text-white"
+                >
+                  Add To Cart
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

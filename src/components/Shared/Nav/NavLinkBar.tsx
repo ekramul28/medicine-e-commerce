@@ -1,4 +1,5 @@
 "use client";
+import { TUser } from "@/app/redux/features/Auth/authSlice";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
@@ -10,11 +11,9 @@ const NavLinkBar = () => {
   const pages = [
     { nav: "Home", route: "/" },
     { nav: "Medicine", route: "/medicine" },
-    { nav: "Lab Tests", route: "/labtests" },
     { nav: "Healthcare", route: "/healthcare" },
     { nav: "Health Blogs", route: "/healthblogs" },
     { nav: "Offers", route: "/offers" },
-    { nav: "Dashboard", route: "/dashboard" },
   ];
 
   return (

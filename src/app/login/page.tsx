@@ -22,17 +22,57 @@ const LoginPage = () => {
     console.log(password, email);
     try {
       const result = await loginUser({ email, password }).unwrap();
-      console.log(result);
       if (result?.success) {
         const user = verifyToken(result.data.accessToken) as TUser;
-        console.log({ user });
+        dispatch(setUser({ user: user, token: result.data.accessToken }));
+      }
+      if (result?.error) {
+        setLoginError(result?.error?.data?.message);
+      }
+      form.reset();
+      window.location.href = "/";
+      toast("Login Successfully");
+    } catch (error) {
+      setLoginError((error as any).data.message);
+    }
+  };
+
+  const demoAdmin = async () => {
+    try {
+      const data = {
+        email: "mdekramulhassan168@gmail.com",
+        password: "Ekramul28",
+      };
+      const result = await loginUser(data).unwrap();
+      if (result?.success) {
+        const user = verifyToken(result.data.accessToken) as TUser;
         dispatch(setUser({ user: user, token: result.data.accessToken }));
       }
       if (result?.error) {
         console.log(result?.error?.data?.message);
         setLoginError(result?.error?.data?.message);
       }
-      form.reset();
+      window.location.href = "/";
+      toast("Login Successfully");
+    } catch (error) {
+      setLoginError((error as any).data.message);
+    }
+  };
+  const demoUser = async () => {
+    try {
+      const data = {
+        email: "mdekramulhassan16@gmail.com",
+        password: "Ekramul28",
+      };
+      const result = await loginUser(data).unwrap();
+      if (result?.success) {
+        const user = verifyToken(result.data.accessToken) as TUser;
+        dispatch(setUser({ user: user, token: result.data.accessToken }));
+      }
+      if (result?.error) {
+        console.log(result?.error?.data?.message);
+        setLoginError(result?.error?.data?.message);
+      }
       window.location.href = "/";
       toast("Login Successfully");
     } catch (error) {
@@ -157,6 +197,27 @@ const LoginPage = () => {
                 Sign up
               </Link>
             </p>
+            <div className="flex justify-evenly">
+              <div>
+                <button
+                  onClick={demoAdmin}
+                  type="button"
+                  className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                >
+                  Demo Admin
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={demoUser}
+                  type="button"
+                  className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                >
+                  Demo User
+                </button>
+              </div>
+            </div>
+
             <div className="text-red-400 text-center my-4 text-sm font-medium">
               {loginError}
             </div>

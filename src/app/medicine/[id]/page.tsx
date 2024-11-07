@@ -6,14 +6,11 @@ import {
 import { useSingleProductQuery } from "@/app/redux/features/products/productApi";
 import { useAppSelector } from "@/app/redux/hooks";
 import { RootState } from "@/app/redux/store";
-import StarIcon from "@/assets/StarIcon";
 import Container from "@/components/Container/Container";
-import OfferCategories from "@/components/OfferCategories/OfferCategories";
 import ReadOnlyRating from "@/components/Rating/Rating";
 import Button from "@/components/Shared/Button";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import Image from "next/image";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";

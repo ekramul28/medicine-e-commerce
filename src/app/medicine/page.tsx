@@ -92,7 +92,7 @@ const Medicine = () => {
                 onChange={handleSortChange}
                 className="w-full p-2 border rounded"
               >
-                <option aria-readonly>filter</option>
+                <option>filter</option>
                 <option value="updatedAt">New to Old</option>
                 <option value="-updatedAt">Old to New</option>
                 <option value="title">A-Z</option>
